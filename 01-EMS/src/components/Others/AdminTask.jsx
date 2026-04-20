@@ -1,17 +1,17 @@
 import React from 'react'
-import { createContext } from 'react'
+import { useContext } from 'react'
 import { AuthContext } from '../../context/Authprovider'
 
 const AdminTask = () => {
 
- const authData = createContext(AuthContext)
-  console.log(authData.employees);
+ const authData = useContext(AuthContext)
+  console.log(authData?.employees);
   
   return (
     <div className='h-50 p-5 overflow-auto'>
-      {authData.employees.map(function(){
-        return <div className='flex justify-between px-2 h-10  mb-2 items-center rounded bg-red-400 '>
-          <h3>Kiran</h3>
+      {authData?.employees?.map((employee) => {
+        return <div key={employee.id} className='flex justify-between px-2 h-10  mb-2 items-center rounded bg-red-400 '>
+          <h3>{employee.firstName}</h3>
           <h3>Make an UI/UX Design</h3>
           <h5> Status</h5>
         </div>
